@@ -37,6 +37,11 @@ class HomeScreen extends StatelessWidget {
         ), 
       ], 
     ),
+    floatingActionButton: FloatingActionButton(
+      child: Icon(Icons.add),
+      onPressed: (){},
+      mini: true,
+    ),
     body: Container(
       padding: EdgeInsets.all(10.0),
       child: ElevatedButton(
@@ -91,9 +96,7 @@ class ContactScreen extends StatelessWidget {
         IconButton(
           icon: Icon(Icons.settings),
           onPressed: () {
-            Navigator.push(context,
-              MaterialPageRoute(builder: (context) => ContactScreen())
-            );
+            Navigator.pop(context);
           }
         ), 
         IconButton(
@@ -104,13 +107,36 @@ class ContactScreen extends StatelessWidget {
         ), 
       ], 
     ),
-    body: Container(
-      
+    body: Center(
+      child: Column(
+        children: [
+          Text("Bienvenue sur cette page"),
+          SizedBox(height: 30),
+          ElevatedButton(
+            child: Text("Retour"),
+            onPressed: (){
+              Navigator.pop(context);
+            }
+          )
+        ]
+      )
     ),
     bottomNavigationBar: BottomNavigationBar(
       items: [
-
-      ]
+        BottomNavigationBarItem(
+          icon: Icon(Icons.arrow_back),
+          label: "Retour",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.contact_support),
+          label: "Contact",
+        ),
+      ],
+      onTap: (index) {
+        if (index == 0) {
+          Navigator.pop(context);
+        }
+      },
     ),
   );
   }

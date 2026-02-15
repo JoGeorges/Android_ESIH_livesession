@@ -89,6 +89,32 @@ class ContactScreen extends StatelessWidget {
   @override 
   Widget build(BuildContext context) {
   return Scaffold(
+    drawer: Drawer(
+      child: ListView (
+        children: [
+          DrawerHeader(
+            child: Text("Header"),
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            )
+          ),
+          ListTile(title: Text("Settings 1")),
+          ListTile(title: Text("Help")),
+          ListTile(
+            title: Text("Contact"),
+            onTap: (){
+              Navigator.pop(context);
+              Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ContactScreen())
+              );
+            },
+            leading: Icon(Icons.question_answer),
+            trailing: Icon(Icons.arrow_forward),
+            subtitle: Text("Customer Services")
+          ),
+        ]
+      )
+    ),
     appBar: AppBar(
       title: Text('ZapZapp'),
       leading: Icon(Icons.menu),
